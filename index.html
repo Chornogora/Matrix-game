@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3</title>
+    <script src="script/vue.js"></script>
+    <script src="script/util.js"></script>
+    <link href="style/table.css" rel="stylesheet"/>
+    <link href="style/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="main">
+    <div id="game">
+        <div class="start" v-if="status === 'start'">
+            <img src="images/lab3.png" alt="lab3" class="lab3"/>
+            <button class="start-button" v-on:click="start()">Старт</button>
+        </div>
+        <div id="count1" class="count1" v-if="status !== 'start'">{{ playerPoints }}</div>
+        <div id="count2" class="count2" v-if="status !== 'start'">{{ enemyPoints }}</div>
+        <div class="final-text" v-if="status === 'finished'">{{ text }}
+        </div>
+    </div>
+    <div id="field" class="field">
+        <table id="matrix" class="matrix" v-if="getStatus() !== 'finished'">
+            <tr>
+                <td style="border: 0"></td>
+                <td></td>
+                <td v-for="type in types">
+                    <img class="matrix-image" v-bind:src="type.image" v-bind:alt="type.name"/>
+                </td>
+            </tr>
+            <tr v-for="row in rows" :class="{ chosen: row.chosen }">
+                <td class="matrix-image, arrow" v-on:click="chooseStrategy(row)"></td>
+                <td>
+                    <img class="matrix-image" v-bind:src="row.type.image" v-bind:alt="row.type.name"/>
+                </td>
+                <td v-for="cell in row.cells" :class="{ ineffective: true, effective: row.effective,
+                chosen: row.chosen, pingbyenemy: cell.pingByEnemy, chosenbyenemy: cell.chosenByEnemy,
+                fight: cell.fight}">
+                    {{ cell.points }}
+                </td>
+            </tr>
+        </table>
+        <table class="controls" id="controls" v-if="getStatus() !== 'finished'">
+            <tr>
+                <td style="border: 0">
+                    <button class="effective-button" onclick="matrix.generate()">↻ Перегенерувати</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0">
+                    <button class="effective-button" onclick="matrix.showEffective()">Показати ефективні стратегії
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0">
+                    <input type="radio" value="true" id="1" :checked="enemyStyle === 'random'"
+                           v-on:click="('random')"/>
+                    <label for="1">Противник грає випадково</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0">
+                    <input type="radio" id="2" :checked="enemyStyle === 'effective'"
+                           v-on:click="setEnemyStyle('effective')"/>
+                    <label for="2">Противник грає ефективно</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0">
+                    <input type="radio" id="3" :checked="enemyStyle === 'gambling'"
+                           v-on:click="setEnemyStyle('gambling')"/>
+                    <label for="3">Противник грає азартно</label>
+                </td>
+            </tr>
+        </table>
+        <div id="battleground" v-if="getStatus() !== 'finished'">
+            <img src="images/battleground.jpg" class="battleground" alt="battleground"/>
+            <div class="empty1"></div>
+            <div class="empty2"></div>
+            <img src="images/plane.png" alt="plane" class="plane1" v-if="coordinates.player.type.name === 'avia'"
+                 v-bind:style="'margin-left:' + coordinates.player.shiftX + 'px; margin-bottom:+' + coordinates.player.shiftY + 'px'">
+            <img src="images/plane.png" alt="plane" class="plane2" v-if="coordinates.enemy.type.name === 'avia'"
+                 v-bind:style="'margin-right:' + coordinates.enemy.shiftX + 'px; margin-bottom:+' + coordinates.enemy.shiftY + 'px'">
+            <img src="images/tank.png" alt="tank" class="ground1" v-if="coordinates.player.type.name === 'tank'"
+                 v-bind:style="'margin-left:' + coordinates.player.shiftX + 'px'">
+            <img src="images/tank.png" alt="tank" class="ground2" v-if="coordinates.enemy.type.name === 'tank'"
+                 v-bind:style="'margin-right:' + coordinates.enemy.shiftX + 'px'">
+            <img src="images/soldiers.png" alt="infantry" class="ground1"
+                 v-if="coordinates.player.type.name === 'infantry'"
+                 v-bind:style="'margin-left:' + coordinates.player.shiftX + 'px'">
+            <img src="images/soldiers.png" alt="infantry" class="ground2"
+                 v-if="coordinates.enemy.type.name === 'infantry'"
+                 v-bind:style="'margin-right:' + coordinates.enemy.shiftX + 'px'">
+            <img src="images/ship.png" alt="ship" class="ship1" v-if="coordinates.player.type.name === 'ship'"
+                 v-bind:style="'margin-left:' + coordinates.player.shiftX + 'px; margin-bottom:+' + coordinates.player.shiftY + 'px'">
+            <img src="images/ship.png" alt="ship" class="ship2" v-if="coordinates.enemy.type.name === 'ship'"
+                 v-bind:style="'margin-right:' + coordinates.enemy.shiftX + 'px; margin-bottom:+' + coordinates.enemy.shiftY + 'px'">
+        </div>
+    </div>
+</div>
+
+<div id="sound"></div>
+
+<div>
+    <script src="script/game.js"></script>
+    <script src="script/sound.js" async></script>
+</div>
+</body>
+</html>

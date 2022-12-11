@@ -1,0 +1,224 @@
+body {
+    overflow: hidden;
+}
+
+img, div {
+    user-select: none;
+}
+
+.main {
+    position: absolute;
+    background: url("/images/background.png");
+    background-size: cover;
+    width: 103%;
+    height: 103%;
+    left: -5px;
+    top: -5px;
+}
+
+.lab3 {
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    top: 50px;
+}
+
+.start-button {
+    box-shadow: inset 0 1px 0 0 #f5978e;
+    background: #f24537 linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+    border-radius: 10px;
+    border: 1px solid #d02718;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #810e05;
+    position: absolute;
+    left: 700px;
+    top: 600px;
+}
+
+.start-button:hover {
+    background: #c62d1f linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+}
+
+.field {
+    background-color: white;
+    position: absolute;
+    left: 275px;
+    width: 960px;
+    top: 50px;
+    height: 650px;
+    border-radius: 10px;
+    display: none;
+}
+
+.matrix {
+    position: absolute;
+    left: 180px;
+    top: 5px;
+}
+
+.controls {
+    position: absolute;
+    left: 560px;
+    top: 10px;
+    width: 25%;
+    border: 0;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+.effective-button {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.effective-button:hover {
+    background-color: rgb(249, 250, 251);
+}
+
+.effective-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.effective-button:focus-visible {
+    box-shadow: none;
+}
+
+.battleground {
+    position: absolute;
+    left: 180px;
+    bottom: 10px;
+    width: 600px;
+}
+
+.count1 {
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    color: lawngreen;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 70px;
+    text-align: center;
+}
+
+.count2 {
+    position: absolute;
+    right: 130px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    color: orangered;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 70px;
+    text-align: center;
+}
+
+.empty1 {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    width: 160px;
+    height: 325px;
+    background-color: white;
+    z-index: 2;
+}
+
+.empty2 {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 160px;
+    height: 325px;
+    background-color: white;
+    z-index: 2;
+}
+
+.plane1, .ground1, .ship1 {
+    transition: margin-left 700ms, margin-bottom 700ms;
+}
+
+.plane2, .ground2, .ship2 {
+    transition: margin-right 700ms, margin-bottom 700ms;
+}
+
+.plane1 {
+    position: absolute;
+    left: 100px;
+    bottom: 240px;
+    width: 80px;
+    transform: scaleX(-1);
+}
+
+.plane2 {
+    position: absolute;
+    right: 100px;
+    bottom: 240px;
+    width: 80px;
+}
+
+.ground1 {
+    position: absolute;
+    left: 100px;
+    bottom: 115px;
+    width: 80px;
+}
+
+.ground2 {
+    position: absolute;
+    right: 100px;
+    bottom: 115px;
+    width: 80px;
+    transform: scaleX(-1);
+}
+
+.ship1 {
+    position: absolute;
+    left: 100px;
+    bottom: 20px;
+    width: 80px;
+}
+
+.ship2 {
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+    width: 80px;
+    transform: scaleX(-1);
+}
+
+.final-text {
+    position: absolute;
+    top: 250px;
+    text-align: center;
+    width: 100%;
+    font-size: 60pt;
+    z-index: 5;
+}
