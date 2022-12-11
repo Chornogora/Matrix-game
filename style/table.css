@@ -15,13 +15,13 @@ td {
 }
 
 .arrow {
-    background-image: url("/images/empty-arrow.png");
+    background-image: url("/Matrix-game/images/empty-arrow.png");
     background-size: cover;
     border: 0;
 }
 
 .arrow:hover {
-    background-image: url("/images/filled-arrow.png");
+    background-image: url("/Matrix-game/images/filled-arrow.png");
     cursor: pointer;
 }
 
