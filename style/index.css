@@ -8,7 +8,7 @@ img, div {
 
 .main {
     position: absolute;
-    background: url("/images/background.png");
+    background: url("/Matrix-game/images/background.png");
     background-size: cover;
     width: 103%;
     height: 103%;

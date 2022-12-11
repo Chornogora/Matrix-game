@@ -5,7 +5,7 @@ const audioFiles = ['avia.mp3', 'full-defeat.mp3', 'infantry.mp3', 'shooting-2.m
 const soundDiv = document.getElementById("sound");
 audioFiles.forEach(file => {
     const audio = document.createElement("audio");
-    audio.setAttribute("src", "/sounds/" + file);
+    audio.setAttribute("src", "/Matrix-game/sounds/" + file);
     audio.setAttribute("id", file.substr(0, file.indexOf('.')));
     soundDiv.appendChild(audio);
 });
